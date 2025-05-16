@@ -104,7 +104,7 @@ dingyue = base64.b64encode(urls.encode("utf-8")).decode("utf-8")
 print(dingyue)
 auth = Auth.Token("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")
 g = Github(auth=auth)
-repo = g.get_repo("Klaus-Arroyo-Zeng/autoupdatejustmystocks")
+repo = g.get_repo("autoupdatejustmystocks")
 file = repo.get_contents("config")  # 如 "data/config.txt"
 
 # 更新文件
