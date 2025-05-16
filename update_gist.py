@@ -9,6 +9,7 @@ import tempfile
 
 GIST_ID = "4d1900a8ff4c55aa854a04b4ee285726"  # 替换为你的 Gist ID
 GITHUB_TOKEN = os.environ.get("GIST_TOKEN")  # 从环境变量获取 Token
+print(GITHUB_TOKEN)
 
 GEOIP_DB_URL = "https://git.io/GeoLite2-City.mmdb"  # 需提供可下载的 URL
 def load_geolite2_tempfile(url):
@@ -101,8 +102,9 @@ dingyue = base64.b64encode(urls.encode("utf-8")).decode("utf-8")
 print(dingyue)
 url = f"https://api.github.com/gists/{GIST_ID}"
 headers = {
-    "Authorization": f"token {GITHUB_TOKEN}",
-    "Accept": "application/vnd.github.v3+json"
+    "Authorization": f"token {GIST_TOKEN}",  # 或 "Bearer {GIST_TOKEN}"
+    "Accept": "application/vnd.github.v3+json",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36"  # GitHub 要求自定义 User-Agent
 }
 data = {
     "files": {
