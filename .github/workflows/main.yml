@@ -1,0 +1,26 @@
+name: Update Gist Daily
+
+on:
+  schedule:
+    - cron: "0 0 * * *"  # 每天UTC 0点运行
+  workflow_dispatch:      # 支持手动触发
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Update Gist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GIST_TOKEN }}
+        run: |
+          pip install requests
+          pip install geoip2
+          python update_gist.py
