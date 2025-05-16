@@ -6,15 +6,21 @@ on:
   workflow_dispatch:      # 支持手动触发
 
 jobs:
-  update-file:
+  update:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
     steps:
     - uses: actions/checkout@v4
       with:
-        fetch-depth: 0
-        persist-credentials: true
+        token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Update file
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+    - name: Execute update script
       run: |
         pip install requests
         pip install geoip2
