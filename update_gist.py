@@ -103,7 +103,7 @@ dingyue = base64.b64encode(urls.encode("utf-8")).decode("utf-8")
 print(dingyue)
 url = f"https://api.github.com/gists/{GIST_ID}"
 headers = {
-    "Authorization": f"token {GIST_TOKEN}",  # 或 "Bearer {GIST_TOKEN}"
+    "Authorization": f"Bearer {GIST_TOKEN}",  # 或 "Bearer {GIST_TOKEN}"
     "Accept": "application/vnd.github.v3+json",
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36"  # GitHub 要求自定义 User-Agent
 }
