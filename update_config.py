@@ -100,7 +100,7 @@ for p in proxies.split('\n'):
 print(urls)
 dingyue = base64.b64encode(urls.encode("utf-8")).decode("utf-8")
 print(dingyue)
-g = Github("GHSAT0AAAAAADAVBHBG5W4MEYDM7JW5QFVG2BHQTQQ")
+g = Github(auth="GHSAT0AAAAAADAVBHBG5W4MEYDM7JW5QFVG2BHQTQQ")
 repo = g.get_repo("Klaus-Arroyo-Zeng/autoupdatejustmystocks")
 file = repo.get_contents("config")  # 如 "data/config.txt"
 
