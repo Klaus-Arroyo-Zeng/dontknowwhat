@@ -1,4 +1,3 @@
-from github import Github
 import requests
 import base64
 import json
@@ -7,7 +6,6 @@ import socket
 import geoip2.database
 import os
 import tempfile
-from github import Auth
 
 
 # 示例（替换为你的 GeoLite2 下载链接）
