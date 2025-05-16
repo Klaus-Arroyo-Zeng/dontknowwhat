@@ -102,15 +102,13 @@ for p in proxies.split('\n'):
 print(urls)
 dingyue = base64.b64encode(urls.encode("utf-8")).decode("utf-8")
 print(dingyue)
-auth = Auth.Token("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")
-g = Github(auth=auth)
-repo = g.get_repo("autoupdatejustmystocks")
-file = repo.get_contents("config")  # 如 "data/config.txt"
+# # 读取文件内容
+# with open('file.txt', 'r', encoding='utf-8') as file:
+#     content = file.read()
 
-# 更新文件
-repo.update_file(
-    path=file.path,
-    message="Update via PyGithub",
-    content=dingyue,
-    sha=file.sha  # 必须提供
-)
+# # 修改内容（例如替换字符串）
+# new_content = content.replace('旧文本', '新文本')
+
+# 写回文件
+with open('config', 'w', encoding='utf-8') as file:
+    file.write(dingyue)
