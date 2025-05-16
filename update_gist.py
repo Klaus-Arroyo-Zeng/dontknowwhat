@@ -99,9 +99,6 @@ for p in proxies.split('\n'):
 print(urls)
 dingyue = base64.b64encode(urls.encode("utf-8")).decode("utf-8")
 print(dingyue)
-
-content = f"自动更新的内容，时间：{datetime.datetime.now()}"
-
 url = f"https://api.github.com/gists/{GIST_ID}"
 headers = {
     "Authorization": f"token {GITHUB_TOKEN}",
