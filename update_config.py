@@ -73,8 +73,6 @@ for url in subscribe:
         except Exception as e:
             print(e)
         maxTry -=1
-    if maxTry == 0:
-        exit()
     # base64解码
     response = base64.b64decode(response.text)
     p = response.decode('utf-8').split('\n')
