@@ -58,7 +58,7 @@ def get_country_by_ip(ip):
     # 关闭 reader（释放内存）
     reader.close()
     return country
-urls = ''
+urls = []
 subscribe = [
     "https://jmssub.net/members/getsub.php?service=1036510&id=c4aff60b-1ad6-4ee4-84ed-1a55c3cae4b8",
     "https://jmssub.net/members/getsub.php?service=1036512&id=eb015ce0-0d40-4d18-8cd0-7aec8f1c6002",
@@ -91,7 +91,7 @@ for p in proxies:
             # country = get_country(ip["ip"])
             response = reader.city(str(ip))
             country = response.country.iso_code
-            urls += p.split('#')[0] + "#" + country
+            urls.append(p.split('#')[0] + "#" + country)
         # country = get_country(ip)
     elif p.startswith('vmess'):
         pb = p.split('://')[1]
@@ -107,13 +107,14 @@ for p in proxies:
         print(vmess)
         # vmess转为bytes-like object
         vmess = json.dumps(vmess)
-        urls += "vmess://" + base64.b64encode(vmess.encode("utf-8")).decode("utf-8")
+        urls.append("vmess://" + base64.b64encode(vmess.encode("utf-8")).decode("utf-8"))
         # country = get_country(vmess['add'])
     # 查询 IP
     
     # print(f"Country: {response.country.name}, City: {response.city.name}")
 print(urls)
-dingyue = base64.b64encode(urls.encode("utf-8")).decode("utf-8")
+urls_str = "\n".join(urls)
+dingyue = base64.b64encode(urls_str.encode("utf-8")).decode("utf-8")
 print(dingyue)
 
 with open("config", "w") as f:
