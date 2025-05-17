@@ -79,7 +79,7 @@ for url in subscribe:
     response = base64.b64decode(response.text)
     p = response.decode('utf-8').split('\n')
     proxies = [*proxies,*p]
-
+reader = load_geolite2_tempfile(GEOIP_DB_URL)
 # print(proxies.split('\n'))
 for p in proxies:
     print(p)
@@ -91,7 +91,9 @@ for p in proxies:
         if rip["scuss"]:
             ip = rip["ip"]
             # country = get_country(ip["ip"])
-            urls += p.split('#')[0] + "#" + ip
+            response = reader.city(str(ip))
+            country = response.country.iso_code
+            urls += p.split('#')[0] + "#" + country
         # country = get_country(ip)
     elif p.startswith('vmess'):
         pb = p.split('://')[1]
@@ -101,7 +103,9 @@ for p in proxies:
         pd = base64.b64decode(pb).decode('utf-8')
         vmess = json.loads(pd)
         ip = vmess['add']
-        vmess['ps'] = ip
+        response = reader.city(str(ip))
+        country = response.country.iso_code
+        vmess['ps'] = country
         print(vmess)
         # vmess转为bytes-like object
         vmess = json.dumps(vmess)
