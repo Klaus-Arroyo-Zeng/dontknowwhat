@@ -100,13 +100,8 @@ for p in proxies.split('\n'):
 print(urls)
 dingyue = base64.b64encode(urls.encode("utf-8")).decode("utf-8")
 print(dingyue)
-# # 读取文件内容
-# with open('file.txt', 'r', encoding='utf-8') as file:
-#     content = file.read()
 
-# # 修改内容（例如替换字符串）
-# new_content = content.replace('旧文本', '新文本')
+with open("config", "w") as f:
+    f.write(dingyue)
 
-# 写回文件
-with open('config', 'w', encoding='utf-8') as file:
-    file.write(dingyue)
+
