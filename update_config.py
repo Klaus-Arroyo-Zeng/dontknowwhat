@@ -59,16 +59,29 @@ def get_country_by_ip(ip):
     reader.close()
     return country
 urls = ''
-url = "https://jmssub.net/members/getsub.php?service=1036510&id=c4aff60b-1ad6-4ee4-84ed-1a55c3cae4b8"
-response = requests.get(url)
-# base64解码
-response = base64.b64decode(response.text)
-# 转换为字符串
-# r = requests.get("https://api.ipshudi.com/query/?ip=45.78.59.148&oid=5&mid=5&from=siteFront&datatype=jsonp&sign=526d7c18feb6249cb6f00d0b921dbd93&callback=jsonp_06465841737099244")
-# print(r.text)
-proxies = response.decode('utf-8')
+subscribe = [
+    "https://jmssub.net/members/getsub.php?service=1036510&id=c4aff60b-1ad6-4ee4-84ed-1a55c3cae4b8",
+    "https://jmssub.net/members/getsub.php?service=1036512&id=eb015ce0-0d40-4d18-8cd0-7aec8f1c6002",
+    "https://jmssub.net/members/getsub.php?service=1036511&id=86239d05-c5c3-45a5-8e80-06fe5c4ff55e",
+]
+proxies = []
+for url in subscribe:
+    maxTry = 5
+    while maxTry > 0 :
+        try:
+            response = requests.get(url)
+        except Exception as e:
+            print(e)
+        maxTry -=1
+    if maxTry == 0:
+        exit()
+    # base64解码
+    response = base64.b64decode(response.text)
+    p = response.decode('utf-8').split('\n')
+    proxies = [*proxies,*p]
+
 # print(proxies.split('\n'))
-for p in proxies.split('\n'):
+for p in proxies:
     print(p)
     ip = '223.5.5.5'
     if p.startswith('ss'):
@@ -103,5 +116,3 @@ print(dingyue)
 
 with open("config", "w") as f:
     f.write(dingyue)
-
-
