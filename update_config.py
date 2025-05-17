@@ -114,6 +114,7 @@ for p in proxies:
     # print(f"Country: {response.country.name}, City: {response.city.name}")
 print(urls)
 urls_str = "\n".join(urls)
+print(urls_str)
 dingyue = base64.b64encode(urls_str.encode("utf-8")).decode("utf-8")
 print(dingyue)
 
