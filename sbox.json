@@ -7,6 +7,7 @@
       {
         "tag": "remote",
         "address": "https://dns.google/dns-query",
+        "address_resolver": "remote",
         "detour": "🌍 节点选择"
       },
       {
