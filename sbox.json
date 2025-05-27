@@ -38,41 +38,11 @@
   ],
   
   "outbounds": [
-    {"type": "shadowsocks", "tag": "🇬🇧GB", "server": "65.49.150.215", "server_port": "13098", "method": "aes-256-gcm", "password": "9WHcDYG6zYap29yg"
+    {"type": "shadowsocks", "tag": "🇬🇧GB", "server": "65.49.150.215", "server_port": 13098, "method": "aes-256-gcm", "password": "9WHcDYG6zYap29yg"
     },
-    {"type": "shadowsocks", "tag": "🇬🇧GB", "server": "65.49.150.215", "server_port": "13098", "method": "aes-256-gcm", "password": "9WHcDYG6zYap29yg"
+    {"type": "vmess", "tag": "🇺🇸 US", "server": "199.115.229.112", "server_port": 13098, "uuid": "86239d05-c5c3-45a5-8e80-06fe5c4ff55e", "security": "none", "alter_id": 0, "network": "tcp"
     },
-    {"type": "vmess", "tag": "🇺🇸 US", "server": "199.115.229.112", "server_port": "13098", "uuid": "86239d05-c5c3-45a5-8e80-06fe5c4ff55e",   "security": "none", "alter_id": 0, "network": "tcp"
-    },
-    {"type": "vmess", "tag": "🇺🇸 US", "server": "199.115.229.112", "server_port": "13098", "uu uid": "86239d05-c5c3-45a5-8e80-06fe5c4ff55e", "security": "none", "alter_id": 0, "network": "tcp"
-    },
-    {"type": "vmess", "tag": "🇺🇸 US", "server": "199.115.229.112", "server_port": "13098", "uuid": "86239d05-c5c3-45a5-8e80-06fe5c4ff55e", "security": "none", "alter_id": 0, "network": "tcp"
-    },
-    {"type": "vmess", "tag": "🇺🇸 US", "server": "199.115.229.112", "server_port": "13098", "uuid": "86239d05-c5c3-45a5-8e80-06fe5c4ff55e", "security": "none", "alter_id": 0, "network": "tcp"
-    },
-    {"type": "shadowsocks", "tag": "🇬🇧GB", "server": "65.49.150.215", "server_port": "13098", "method": "aes-256-gcm", "password": "9WHcDYG6zYap29yg"
-    },
-    {"type": "shadowsocks", "tag": "🇬🇧GB", "server": "65.49.150.215", "server_port": "13098", "method d": "aes-256-gcm", "password": "9WHcDYG6zYap29yg"
-    },
-    {"type": "vmess", "tag": "🇺🇸 US", "server": "199.115.229.112", "server_port": "13098", "uuid": "86239d05-c5c3-45a5-8e80-06fe5c4ff55e", "security": "none", "alter_id": 0, "network": "tcp"
-    },
-    {"type": "vmess", "tag": "🇺🇸 US", "server": "199 9.115.229.112", "server_port": "13098", "uuid": "86239d05-c5c3-45a5-8e80-06fe5c4ff55e", "security": "none", "alter_id": 0, "network": "tcp"
-    },
-    {"type": "vmess", "tag": "🇺🇸 US", "server": "199.115.229.112", "server_port": "13098", "uuid": "86239d05-c5c3-45a5-8e80-06fe5c4ff55e", "security": "none", "alter_id": 0, "network": "tcp"
-    },
-    {"type": "vmess", "tag": "🇺🇸 US", "server": "199.115.229.112", "server_port": "13098", "uuid": "86239d05 5-c5c3-45a5-8e80-06fe5c4ff55e", "security": "none", "alter_id": 0, "network": "tcp"
-    },
-    {"type": "shadowsocks", "tag": "🇬🇧GB", "server": "65.49.150 0.215", "server_port": "13098", "method": "aes-256-gcm", "password": "9WHcDYG6zYap29yg"
-    },
-    {"type": "shadowsocks", "tag": "🇬🇧GB", "server": "65.49.150.215", "server_port": "13098", "method": "aes-256-gcm", "password": "9WHcDYG6zYap29yg"
-    },
-    {"type": "vmess", "tag": "🇺🇸 US", "server": "199.115.229.112", "server_port": "13098", "uuid": "86239d05-c5c3-45a5-8e80-06fe5c4ff55e", "security": "none", "alter_id": 0, "network": "tcp"
-    },
-    {"type": "vmess", "tag": "🇺🇸 US", "server": "199.115.229.112", "server_port": "13098", "uuid": "86239d05-c5c3-45a5-8e80-06fe5c4ff55e", "security": "none e", "alter_id": 0, "network": "tcp"
-    },
-    {"type": "vmess", "tag": "🇺🇸 US", "server": "199.115.229.112", "server_port": "13098", "uuid": "86239d05-c5 5c3-45a5-8e80-06fe5c4ff55e", "security": "none", "alter_id": 0, "network": "tcp"
-    },
-    {"type": "vmess", "tag": "🇺🇸 US", "server": "199.115.229.112","server_port": "13098", "uuid": "86239d05-c5c3-45a5-8e80-06fe5c4ff55e", "security": "none", "alter_id": 0, "network": "tcp"
+    {"type": "shadowsocks", "tag": "🇬🇧GB", "server": "65.49.150.215", "server_port": 13098, "method d": "aes-256-gcm", "password": "9WHcDYG6zYap29yg"
     },
     { "tag": "🚀 节点选择", "type": "selector", "outbounds": ["🔯 香港自动", "🇭🇰 香港节点", "🇯🇵 日本节点", "🇺🇲 美国节点", "🐸 手动切换", "♻️ 自动选择", "🎯 全球直连"] },
     { "tag": "📹 YouTube", "type": "selector", "outbounds": ["🚀 节点选择", "♻️ 自动选择", "🔯 香港自动", "🇭🇰 香港节点", "🇯🇵 日本节点", "🇺🇲 美国节点", "🐸 手动切换"] },
