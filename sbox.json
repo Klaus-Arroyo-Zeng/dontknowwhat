@@ -1,61 +1,43 @@
 {
   "log": {
-    "level": "error"
+    "level": "warn"
   },
   "dns": {
     "servers": [
       {
-        "tag": "google",
-        "address": "tls://dns.google",
-        "address_resolver": "alidns",
-        "detour": "🇺🇸 US"
+        "tag": "remote",
+        "address": "https://dns.google/dns-query",
+        "detour": "🌍 节点选择"
       },
       {
-        "tag": "alidns",
+        "tag": "local",
         "address": "223.5.5.5",
         "detour": "direct"
-      },
-      {
-        "tag": "block",
-        "address": "rcode://success"
       }
     ],
     "rules": [
       {
-        "rule_set": "geosite-category-ads-all",
-        "server": "block"
+        "rule_set": "geosite-cn",
+        "server": "local"
       },
       {
-        "rule_set": [
-          "geosite-gfw"
-        ],
-        "server": "🇺🇸 US"
+        "rule_set": "geosite-!cn",
+        "server": "remote"
       }
     ],
-    "final": "alidns",
-    "disable_cache": true,
     "strategy": "prefer_ipv4"
   },
-  "rules": [
-    {
-      "rule_set": "geosite-cn",
-      "server": "local"
-    },
-    {
-      "rule_set": "geosite-!cn",
-      "server": "remote"
-    }
-  ],
-  "strategy": "prefer_ipv4"
-  ,
   "inbounds": [
     {
       "type": "tun",
-      "interface_name": "tun",
+      "tag": "tun-in",
+      "interface_name": "utun233",
       "inet4_address": "172.19.0.1/30",
       "auto_route": true,
-      "strict_route": false,
-      "stack": "system"
+      "strict_route": true,
+      "stack": "system",
+      "sniff": true,
+      "sniff_override_destination": true
     }
   ],
   "outbounds": [
@@ -80,8 +62,7 @@
     {
       "type": "selector",
       "tag": "🌍 节点选择",
-      "outbounds": ["🇺🇸 US", "🇬🇧 GB"],
-      "default": "🇺🇸 US"
+      "outbounds": ["🇬🇧 GB", "🇺🇸 US"]
     },
     {
       "type": "direct",
@@ -91,54 +72,53 @@
       "type": "block",
       "tag": "block"
     }
-  ],  
+  ],
   "route": {
+    "auto_detect_interface": true,
+    "final": "🌍 节点选择",
     "rules": [
       {
-        "protocol": "dns",
-        "outbound": "dns-out"
-      }, 
-      {
-        "rule_set": [
-          "geoip-cn"
-        ],
+        "rule_set": "geosite-cn",
         "outbound": "direct"
       },
       {
-        "rule_set": [
-          "geosite-gfw"
-        ],
-        "outbound": "🇺🇸 US"
+        "rule_set": "geoip-cn",
+        "outbound": "direct"
       },
       {
-        "rule_set": "geosite-category-ads-all",
+        "rule_set": "geosite-category-ads",
         "outbound": "block"
       }
     ],
     "rule_set": [
       {
+        "tag": "geosite-cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/SagerNet/sing-geosite/releases/latest/download/geosite-cn.db",
+        "download_detour": "🌍 节点选择"
+      },
+      {
+        "tag": "geosite-!cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/SagerNet/sing-geosite/releases/latest/download/geosite-geolocation-!cn.db",
+        "download_detour": "🌍 节点选择"
+      },
+      {
+        "tag": "geosite-category-ads",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/SagerNet/sing-geosite/releases/latest/download/geosite-category-ads-all.db",
+        "download_detour": "🌍 节点选择"
+      },
+      {
         "tag": "geoip-cn",
         "type": "remote",
         "format": "binary",
-        "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs",
-        "download_detour": "🇺🇸 US"
-      },
-      {                                                                                            
-        "tag": "geosite-gfw",                                                          
-        "type": "remote",                                                                          
-        "format": "binary",                                                                                 
-        "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/gfw.srs",
-        "download_detour": "🇺🇸 US"                                                                         
-      },
-      {
-        "tag": "geosite-category-ads-all",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-category-ads-all.srs",
-        "download_detour": "🇺🇸 US"
+        "url": "https://github.com/SagerNet/sing-geoip/releases/latest/download/geoip-cn.db",
+        "download_detour": "🌍 节点选择"
       }
-    ],
-    "final": "direct",
-    "auto_detect_interface": true
+    ]
   }
 }
