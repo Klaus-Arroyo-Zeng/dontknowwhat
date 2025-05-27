@@ -3,29 +3,29 @@
     "level": "error"
   },
   "dns": {
-    "servers": [
-      {
-        "tag": "remote",
-        "address": "https://dns.google/dns-query",
-        "detour": "🌍 节点选择"
-      },
-      {
-        "tag": "local",
-        "address": "223.5.5.5",
-        "detour": "direct"
-      }
-    ],
-    "rules": [
-      {
-        "rule_set": "geosite-cn",
-        "server": "local"
-      },
-      {
-        "rule_set": "geosite-!cn",
-        "server": "remote"
-      }
-    ],
-    "strategy": "prefer_ipv4"
+  "servers": [
+    {
+      "tag": "remote",
+      "address": "https://dns.google/dns-query",
+      "detour": "🌍 节点选择"
+    },
+    {
+      "tag": "local",
+      "address": "223.5.5.5",
+      "detour": "direct"
+    }
+  ],
+  "rules": [
+    {
+      "rule_set": "geosite-cn",
+      "server": "local"
+    },
+    {
+      "rule_set": "geosite-!cn",
+      "server": "remote"
+    }
+  ],
+  "strategy": "prefer_ipv4"
   },
   "inbounds": [
     {
